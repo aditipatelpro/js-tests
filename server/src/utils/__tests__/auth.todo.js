@@ -1,13 +1,32 @@
 import { isPasswordAllowed, userToJSON } from "../auth"
-test('isPasswordAllowed only allows some passwords', () => {
-  expect.assertions(4);
-  expect(isPasswordAllowed('')).toBe(false);
-  expect(isPasswordAllowed('arasrsts')).toBe(false);
-  expect(isPasswordAllowed('123456666')).toBe(false);
-  expect(isPasswordAllowed('arst0*5')).toBe(true);
 
+describe('isPasswordAllowed', () => {
+  const allowedPasswords = ['arst0*5'];
+  const disAllowedPasswords = ['','arasrsts','123456666'];
+
+  allowedPasswords.forEach(pwd => {
+    it(`"${pwd}" should be allowed`, () => {
+      expect(isPasswordAllowed(pwd)).toBe(true);
+    });
+  });
+
+  disAllowedPasswords.forEach(pwd => {
+    it(`"${pwd}" should not be allowed`, () => {
+      expect(isPasswordAllowed(pwd)).toBe(false);
+    })
+  })
 
 })
+
+// test('isPasswordAllowed only allows some passwords', () => {
+//   expect.assertions(4);
+//   expect(isPasswordAllowed('')).toBe(false);
+//   expect(isPasswordAllowed('arasrsts')).toBe(false);
+//   expect(isPasswordAllowed('123456666')).toBe(false);
+//   expect(isPasswordAllowed('arst0*5')).toBe(true);
+
+
+// })
 
 test('userToJSON excludes secure properties', () => {
  const safeUser = {
