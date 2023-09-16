@@ -15,18 +15,7 @@ describe('isPasswordAllowed', () => {
       expect(isPasswordAllowed(pwd)).toBe(false);
     })
   })
-
 })
-
-// test('isPasswordAllowed only allows some passwords', () => {
-//   expect.assertions(4);
-//   expect(isPasswordAllowed('')).toBe(false);
-//   expect(isPasswordAllowed('arasrsts')).toBe(false);
-//   expect(isPasswordAllowed('123456666')).toBe(false);
-//   expect(isPasswordAllowed('arst0*5')).toBe(true);
-
-
-// })
 
 test('userToJSON excludes secure properties', () => {
  const safeUser = {
